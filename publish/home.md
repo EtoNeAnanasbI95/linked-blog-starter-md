@@ -7,9 +7,9 @@
 * [[__note]] что-то похожее на дневник 
 # Работа
 ## IT
-* [[Languages]] языки
-* [[Instruments]] инфраструктурные технологии
-* [[Getting job]] получение работы
+* [[Languages/Golang|Golang]] языки
+* [[Databases]] инфраструктурные технологии
+* [[Getting job/Golang|Golang]] получение работы
 ### Сферы it
 * [[Frontend]]
 * [[Backend]]
