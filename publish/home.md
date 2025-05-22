@@ -10,6 +10,7 @@
 * [[Languages]] языки
 * [[Databases]] инфраструктурные технологии
 * [[Getting job]] получение работы
+* 
 ### Сферы it
 * [[Frontend]]
 * [[Backend]]
