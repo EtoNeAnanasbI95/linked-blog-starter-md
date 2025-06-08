@@ -1,0 +1,2 @@
+* [Redux](https://redux.js.org/) Глобальный менеджер управления состоянием web приложений
+* Есть [React-Redux](https://react-redux.js.org/), где куча бойлерплейта, а есть [[Redux-toolkit]], который удобнее и рекомендуется самим Redux
