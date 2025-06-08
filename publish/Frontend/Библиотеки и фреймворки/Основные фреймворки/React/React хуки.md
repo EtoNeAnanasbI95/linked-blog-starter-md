@@ -23,6 +23,128 @@ const example: React.FC = () => {
 }
 ```
 * То есть мы сделали переменную, которая несёт в себе какое состояние, и прокинули её в вёрстку. Сделали. мы это, чтобы ввести переменную в механизм реакта, дабы он следил за изменением её состояния, и в случае изменения, обновлял контент в вёрстке
+### useReducer
+* Хук, который используется для управления сложным состоянием в компоненте, когда логика обновления состояния становится громоздкой для `useState`. `useReducer` принимает редюсер (функцию, которая определяет, как обновлять состояние) и начальное состояние, а возвращает текущее состояние и функцию `dispatch` для отправки действий.
+* Подходит для случаев, когда состояние зависит от предыдущего значения или когда нужно обрабатывать разные типы действий (например, добавление, удаление, обновление).
+```ts
+// .../toso-reducer.ts
+
+// Типы для состояния и действий
+interface TodoState {
+  todos: Array<{ id: string; text: string; completed: boolean }>;
+  filter: 'all' | 'active' | 'completed';
+}
+
+type TodoAction =
+  | { type: 'ADD_TODO'; payload: string }
+  | { type: 'TOGGLE_TODO'; payload: string }
+  | { type: 'SET_FILTER'; payload: 'all' | 'active' | 'completed' };
+
+// Начальное состояние
+export const initialState: TodoState = {
+  todos: [],
+  filter: 'all',
+};
+
+// Редюсер для обработки действий
+export const todoReducer = (state: TodoState, action: TodoAction): TodoState => {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return {
+        ...state,
+        todos: [
+          ...state.todos,
+          { id: crypto.randomUUID(), text: action.payload, completed: false },
+        ],
+      };
+    case 'TOGGLE_TODO':
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
+        ),
+      };
+    case 'SET_FILTER':
+      return {
+        ...state,
+        filter: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+```
+
+```tsx
+// .../todo-component.tsx
+
+import React, { useReducer, FC } from 'react';
+
+// Компонент, использующий useReducer
+const TodoApp: FC = () => {
+  const [state, dispatch] = useReducer(todoReducer, initialState);
+  const [input, setInput] = useState('');
+
+  const handleAddTodo = () => {
+    if (input.trim()) {
+      dispatch({ type: 'ADD_TODO', payload: input });
+      setInput('');
+    }
+  };
+
+  const filteredTodos = state.todos.filter((todo) => {
+    if (state.filter === 'active') return !todo.completed;
+    if (state.filter === 'completed') return todo.completed;
+    return true;
+  });
+
+  return (
+    <div>
+      <h1>Список задач</h1>
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Добавить задачу"
+      />
+      <button onClick={handleAddTodo}>Добавить</button>
+      <div>
+        <button onClick={() => dispatch({ type: 'SET_FILTER', payload: 'all' })}>
+          Все
+        </button>
+        <button onClick={() => dispatch({ type: 'SET_FILTER', payload: 'active' })}>
+          Активные
+        </button>
+        <button onClick={() => dispatch({ type: 'SET_FILTER', payload: 'completed' })}>
+          Завершённые
+        </button>
+      </div>
+      <ul>
+        {filteredTodos.map((todo) => (
+          <li
+            key={todo.id}
+            onClick={() => dispatch({ type: 'TOGGLE_TODO', payload: todo.id })}
+            style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+          >
+            {todo.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+```
+* ***Описание:***
+	* В этом примере создаётся компонент TodoApp, который управляет списком задач с помощью useReducer.
+	* Состояние (TodoState) включает массив задач (todos) и фильтр (filter) для отображения всех, активных или завершённых задач.
+	* Редюсер (todoReducer) обрабатывает три типа действий: ADD_TODO (добавление задачи), TOGGLE_TODO (переключение статуса задачи) и SET_FILTER (изменение фильтра).
+	* Пользователь может вводить текст в поле, добавлять задачи, переключать их статус (завершена/не завершена) и фильтровать список через кнопки.
+	* Функция dispatch отправляет действия в редюсер, который обновляет состояние. Например, при добавлении задачи создаётся новая задача с уникальным ID через crypto.randomUUID().
+* ***Почему это удобно:***
+	* useReducer делает код более предсказуемым и структурированным, особенно когда состояние сложное или зависит от множества операций.
+	* Редюсер изолирует логику обновления состояния, что упрощает тестирование и отладку.
+	* Подходит для сценариев, где нужно обрабатывать разные типы действий, как в этом примере с добавлением, переключением и фильтрацией задач.
+	* Легко расширять: можно добавить новые действия, просто обновив TodoAction и todoReducer.
 ### useMemo
 * Короче это хук который позволяет  [[Frontend/TS & JS/TS & JS#Мемоизация]] какое-то значение. То есть
 ```tsx
@@ -151,3 +273,87 @@ const Example: React.FC = () => {
 	* Если происходит обновление состояния списка (например, при вводе большого количества данных), React отображает индикатор загрузки ("Загрузка...") до завершения этой транзакции. Это обеспечивает более плавный переход между состояниями.
 * Хук ⁠useTransition не создает новый поток, а позволяет пометить определённые операции как менее важные в контексте рендеринга. Это означает, что когда вы используете ⁠startTransition, вы говорите React, что данное обновление не критично для отзывчивости пользовательского интерфейса.
 * React может обработать изменения состояния внутри ⁠startTransition позже, когда у него будет время, сохраняя при этом высокую отзывчивость интерфейса.
+### useContext
+* Хук, который позволяет получать данные из React Context без необходимости передавать пропсы через всю иерархию компонентов. Контекст полезен для глобальных данных, таких как настройки темы, данные пользователя или другие общие состояния.
+* `useContext` используется в связке с `createContext` и провайдером, который оборачивает компоненты, чтобы передать им данные. Внутри провайдера можно управлять состоянием через `useState` или `useReducer`.
+```tsx
+// .../theme-context.ts
+
+import React, { createContext, useContext, useState, FC } from 'react';
+
+// Создаём контекст
+interface ThemeContextType {
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+}
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+// Провайдер с состоянием
+const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+// Кастомный хук для удобного доступа к контексту
+const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+};
+```
+
+```tsx
+// .../theme-toggle-button.tsx
+
+// Пример компонента, использующего контекст
+const ThemeToggle: FC = () => {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <div style={{ background: theme === 'light' ? '#fff' : '#333', color: theme === 'light' ? '#000' : '#fff' }}>
+      <p>Текущая тема: {theme}</p>
+      <button onClick={toggleTheme}>Переключить тему</button>
+    </div>
+  );
+};
+
+```
+
+```tsx
+// .../App.tsx
+
+// Использование в приложении
+const App: FC = () => {
+  return (
+    <ThemeProvider>
+      <div>
+        <h1>Пример работы с useContext</h1>
+        <ThemeToggle />
+      </div>
+    </ThemeProvider>
+  );
+};
+```
+* ***Описание:***
+	* В этом примере создаётся контекст ThemeContext для управления темой приложения (светлая/тёмная).
+	* Компонент ThemeProvider использует useState для хранения текущей темы (light или dark) и предоставляет функцию toggleTheme для её изменения. Провайдер оборачивает дочерние компоненты и передаёт им данные через value.
+	* Кастомный хук useTheme упрощает доступ к контексту и добавляет проверку, чтобы убедиться, что хук используется внутри ThemeProvider.
+	* Компонент ThemeToggle использует useTheme для получения текущей темы и функции переключения. При нажатии на кнопку тема меняется, а интерфейс обновляется в зависимости от значения theme.
+	* Стили в компоненте ThemeToggle зависят от текущей темы, что демонстрирует, как контекст влияет на UI.
+* ***Почему это удобно:***
+	* useContext позволяет избежать "prop drilling" — передачи пропсов через множество промежуточных компонентов.
+	* Состояние в провайдере (в данном случае theme) централизованно, и любое изменение автоматически обновляет все компоненты, которые используют этот контекст.
+	* Кастомный хук (useTheme) делает код чище и предотвращает ошибки, если контекст не определён.
+	* Подходит для глобальных данных, таких как аутентификация, настройки или локализация, которые нужно использовать в разных частях приложения.
