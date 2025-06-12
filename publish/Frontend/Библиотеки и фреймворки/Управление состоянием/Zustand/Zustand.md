@@ -1,4 +1,8 @@
 * [Zustand](https://zustand-demo.pmnd.rs/) -- Минималистичный, не глобальный менеджер состояния
+
+> [!TIP] Референсный проект
+> Вот референсный проект, на котором можно посмореть не плохой пример кода: https://github.com/AlariCode/4-mini-zustand
+
 # Инициализация
 * Установка:
 ```bash
@@ -138,3 +142,58 @@ const App: FC = () => {
 
 export default App
 ```
+# Добавление Redux DevTools для отладки
+
+- Zustand поддерживает интеграцию с Redux DevTools через middleware devtools, что позволяет отслеживать изменения состояния в браузерном расширении Redux DevTools.
+- Для этого нужно установить пакет zustand/middleware и обновить counterStore.ts.
+- Установка (если ещё не установлен zustand/middleware):
+- Обновление counterStore.ts с использованием devtools:
+```ts
+// .../counter/counterStore.ts
+
+import { create, StateCreator } from 'zustand'
+import { devtools } from 'zustand/middleware'
+
+type CounterState = {
+	counter: number
+}
+
+type CounterActions = {
+	increment: () => void
+	decrement: () => void
+	incrementByAmount: (value: number) => void
+}
+
+const counterSlice: StateCreator<CounterState & CounterActions, [["zustand/devtools", never]]> = (set, get) => ({
+	counter: 0,
+	increment: () => {
+		const { counter } = get()
+		set((state) => ({ ...state, counter: state.counter + 1 }), `increment counter to ${state.counter + 1}`)
+	},
+	decrement: () => {
+		const { counter } = get()
+		set((state) => ({ ...state, counter: state.counter - 1 }), `decrement counter to ${state.counter - 1}`)
+	},
+	incrementByAmount: (value: number) => {
+		const { counter } = get()
+		set({ counter: counter + value }, `increment counter on ${value}`)
+	},
+})
+
+export const useCounterStore = create<CounterState & CounterActions>()(
+	devtools(counterSlice, { name: 'CounterStore' }) // Добавляем devtools с именем стора
+)
+
+export const incrementByAmount = (value: number) => {
+	useCounterStore.getState().incrementByAmount(value)
+}
+
+export const getCounter = () => useCounterStore.getState().counter
+```
+- **Объяснение**:
+    - Импортируем devtools из zustand/middleware.
+    - Оборачиваем counterSlice в devtools, указывая имя стора (CounterStore) для отображения в Redux DevTools.
+    - Теперь все изменения состояния (например, increment, decrement, incrementByAmount) будут видны в Redux DevTools.
+    - Убедитесь, что расширение Redux DevTools установлено в браузере.
+    - Имя стора (CounterStore) помогает идентифицировать стор в DevTools, особенно если используется несколько сторов.
+- **Примечание**: Никаких изменений в компонентах или других частях кода не требуется — Redux DevTools автоматически подхватит изменения состояния.
