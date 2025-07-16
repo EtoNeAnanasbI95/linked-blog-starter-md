@@ -4,7 +4,11 @@ Next.js, как фреймворк с поддержкой серверного 
 
 ## Проблемы глобального состояния на сервере
 
-При использовании SSR в Next.js сервер обрабатывает запросы от разных пользователей одновременно. Если стейт-менеджер инициализируется как глобальный объект на уровне модуля (например, в виде синглтона), это может привести к **утечке данных** между запросами. Один пользователь может случайно получить доступ к состоянию, созданному для другого.
+> [!ERROR] IMPORTANT
+> Здесь идёт речь именно про компоненты, которые не помечены как 'use client'!!!
+> Для компонентов с 'use client', можно использовать классическое объявление
+
+**При использовании SSR** в Next.js сервер обрабатывает запросы от разных пользователей одновременно. Если стейт-менеджер инициализируется как глобальный объект на уровне модуля (например, в виде синглтона), это может привести к **утечке данных** между запросами. Один пользователь может случайно получить доступ к состоянию, созданному для другого.
 
 **Пример проблемы (неправильный подход):**
 
@@ -75,9 +79,8 @@ export const useCounterStore = <T,>(selector: (state: CounterState) => T): T => 
 
 ```tsx
 // app/page.tsx
-'use client'; // Обязательно для клиентских компонентов
 
-import { CounterStoreProvider, useCounterStore } from '../store/counterStore';
+import { CounterStoreProvider } from '../store/counterStore';
 
 export default function Page() {
   return (
@@ -86,6 +89,12 @@ export default function Page() {
     </CounterStoreProvider>
   );
 }
+
+// components/Counter.tsx
+
+'use client'
+
+import { CounterStoreProvider, useCounterStore } from '../store/counterStore';
 
 function Counter() {
   const counter = useCounterStore((state) => state.counter);
