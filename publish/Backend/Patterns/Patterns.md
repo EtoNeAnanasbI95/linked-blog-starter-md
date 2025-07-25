@@ -1,3 +1,3 @@
-* [[Clean arch]]
-* [[DDD]]
-* [[CQRS]]
+* [[❌ Clean arch]]
+* [[❌ DDD]]
+* [[❌ CQRS]]

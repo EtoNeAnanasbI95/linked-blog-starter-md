@@ -1,7 +1,7 @@
 # Table of content
-* CSharp
-* Golang
-* Patterns
+* [[CSharp]]
+* [[Backend/Golang/Golang|Golang]]
+* [[Patterns]]
 # Future roadmap and rules notes
 1. Язык 
 	1. Его особенности
