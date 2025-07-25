@@ -1,3 +1,8 @@
+# Table of content
+* CSharp
+* Golang
+* Patterns
+# Future roadmap and rules notes
 1. Язык 
 	1. Его особенности
 	2. Его библиотеки
@@ -21,7 +26,7 @@
 			4. CDN: Cloudflare, Akamai, AWS CloudFront.
 	5. Контейнеризация и оркестрация
 	    - Контейнеры: Docker, Podman.
-	    - Оркестрация: Kubernetes, Docker Swarm, Nomad.
+	    - Оркестрация: Kubernetes, Docker Swarm
 	    - Основы: pods, deployments, services, ingress.
 	    - Инструменты: Helm, Kustomize, ArgoCD.
 	6. Мониторинг и логирование

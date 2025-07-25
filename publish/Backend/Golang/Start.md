@@ -1,4 +1,4 @@
-## Variables and constants
+# Variables and constants
 
 ```go
 //nums
@@ -40,7 +40,7 @@ c := true //bool
 // constant declaration
 const a string = "NotPineapple"
 ```
-## If, for, switch, range, errors, panic, recover
+# If, for, switch, range, errors, panic, recover
 
 ```go
 a := true
