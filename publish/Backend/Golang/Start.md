@@ -1,3 +1,5 @@
+```table-of-contents
+```
 # Variables and constants
 
 ```go

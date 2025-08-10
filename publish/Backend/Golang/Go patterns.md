@@ -1,3 +1,5 @@
+```table-of-contents
+```
 # Option Pattern
 
 ## Проблема

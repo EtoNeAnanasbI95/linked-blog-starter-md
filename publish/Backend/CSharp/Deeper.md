@@ -1,3 +1,5 @@
+```table-of-contents
+```
 # Memory
 * Смотреть [[Backend/Golang/Deeper#Memory#Общее]]
 # ASP.net
