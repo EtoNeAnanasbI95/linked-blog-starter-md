@@ -51,7 +51,7 @@
 	        - gRPC: protobuf, streaming.
 	    - Асинхронные интеграции: брокеры сообщений, event sourcing.
 	- **Безопасность**
-	    - Аутентификация: JWT, OAuth2, OpenID Connect.
+	    - Аутентификация: JWT, OAuth2, OpenID Connect, LDAP
 	    - Авторизация: RBAC, ABAC.
 	    - Шифрование: TLS, данные в покое (encryption at rest).
 	    - Защита: OWASP Top 10, SQL-инъекции, XSS, CSRF.
