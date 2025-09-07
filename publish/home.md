@@ -9,10 +9,10 @@
 # Работа
 ## IT
 * [[❌ Databases]] инфраструктурные технологии
-* [[❌ Getting job]] получение работы
+* [[Getting job]] получение работы
 * (добавить Work)
 * (добавить OS)
 ### Сферы it
 * [[Frontend]]
 * [[Backend]]
-* [[DevOps]]
+* [[❌ DevOps]]

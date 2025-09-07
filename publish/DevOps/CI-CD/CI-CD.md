@@ -1,4 +1,4 @@
 * [[❌ Argo-CI]]
 * [[❌ GitHub-Actions]]
-* [[❌ GitLab-CI]]
+* [[GitLab-CI]]
 * [[❌ Jenkins]]
