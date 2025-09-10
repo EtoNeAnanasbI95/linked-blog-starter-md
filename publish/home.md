@@ -15,4 +15,4 @@
 ### Сферы it
 * [[Frontend]]
 * [[Backend]]
-* [[❌ DevOps]]
+* [[DevOps]]
