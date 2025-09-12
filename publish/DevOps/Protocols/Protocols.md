@@ -1,4 +1,5 @@
 # Table of content
 * [[❌ GRPC]]
 * [[❌ HTTP]]
-* [[❌ CORS]]
+* [[❌ SSE]]
+* [[❌ WebSocket]]
