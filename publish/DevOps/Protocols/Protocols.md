@@ -3,3 +3,7 @@
 * [[HTTP]]
 * [[❌ SSE]]
 * [[WebSocket]]
+* [[❌ UDP]]
+* [[❌ TLS]]
+* [[❌ SSL]]
+* [[❌ QUIC]] 
