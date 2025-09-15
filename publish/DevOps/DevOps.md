@@ -1,7 +1,7 @@
 # Table of content
 1. [[CI-CD]]
 2. [[Аркестрация]]
-3. [[❌ Infrastructure]]
+3. [[Infrastructure]]
 4. [[Protocols]]
 5. [[❌ Security]]
 6. [[Хуйня]]
