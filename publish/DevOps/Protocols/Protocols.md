@@ -4,6 +4,6 @@
 * [[❌ SSE]]
 * [[WebSocket]]
 * [[❌ UDP]]
-* [[❌ TLS]]
+* [[TLS]]
 * [[❌ SSL]]
 * [[❌ QUIC]] 
