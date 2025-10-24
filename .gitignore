@@ -1,4 +1,4 @@
 **/**.obsidian
 **/**.DS_Store
-publish/Diary
-publish/Secure
+**/Diary
+**/Secure
