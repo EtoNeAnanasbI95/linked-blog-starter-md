@@ -64,7 +64,6 @@ docker node ls
 	```
     
     **Объяснение:**
-    
     - command: server /data{1...4} — запускает MinIO в распределенном режиме с 4 нодами.
     - mode: global — запускает по одному экземпляру MinIO на каждой worker-ноде.
     - volumes: minio-data — локальный том для хранения данных.

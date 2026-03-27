@@ -20,8 +20,8 @@ type CounterState = {
 }
 
 type CounterActions = {
-	increment: () = void
-	decrement: () = void
+	increment: () => void
+	decrement: () => void
 }
 
 const counterSlice: StateCreator<CounterState & CounterActions> = (set, get) => ({
