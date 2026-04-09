@@ -1,0 +1,1 @@
+вместо него видно стандартное tanstack critical client error window
