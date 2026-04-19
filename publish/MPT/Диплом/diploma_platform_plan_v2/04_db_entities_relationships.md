@@ -1,4 +1,5 @@
 # БД (Supabase/PostgreSQL) — обновлённые сущности и связи
+Этот документ является частью [[MPT/Диплом/data|диплома]], напрямую связан с [[02_backend_api_endpoints|Backend API endpoints]], опирается на [[Instruments/Databases/❌ Databases|Databases]] и местами рифмуется с [[MPT/ТРПО/IDEF1X|IDEF1X]].
 
 Изменения:
 - Уточнены роли: **admin** — только Django Admin (но роль в users всё равно хранится).

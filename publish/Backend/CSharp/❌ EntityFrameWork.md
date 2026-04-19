@@ -7,3 +7,5 @@
 ## SelectMany
 ## Join
 ## GroupJoin
+
+Заметка про EntityFramework здесь нужна на стыке [[CSharp]], [[Backend]] и [[Instruments/Databases/❌ Databases|Databases]].

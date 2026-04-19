@@ -32,3 +32,5 @@
 			}
 		});
 ```
+
+Этот кусок я использую как базу и для заметки [[Obsidian]], и для своего проекта [[Personal/Projects/Obsidian-Knowledge-Rings/DESCRIPTION|Obsidian Knowledge Rings]] с отдельным [[Personal/Projects/Obsidian-Knowledge-Rings/PLAN|планом реализации]].

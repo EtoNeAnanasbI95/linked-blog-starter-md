@@ -1,5 +1,7 @@
 ```table-of-contents
 ```
+Эта инструкция относится к разделу [[Настройка]] проекта [[❌ Vpn bussines|Vpn bussines]].
+
 # Установка
 [загрузи](https://github.com/abbasnaqdi/nekoray-macos/releases/download/3.26/nekoray-3.26-apple-chip-official.zip) этот архив и распакуй
 у тебя будет вот это смешнявое приложение. Перенеси его в папку Applications
@@ -34,4 +36,3 @@
 Дальше жми на старт, и впн включится
 ![[telegram-cloud-photo-size-2-5402271064354061357-y.jpg]]
 ОЧЕНЬ ВАЖНО: Перед включением VPN включай system proxy, после выключения vpn выключай system proxy
-

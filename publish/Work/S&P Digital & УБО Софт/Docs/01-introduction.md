@@ -279,3 +279,5 @@ public record ProcessEverythingCommand(
 - Pipeline Behaviors для cross-cutting concerns - не дублируйте код в handlers  
 - Notifications для side-effects - не вызывайте Send() внутри handler'а  
 - Тестируйте handlers изолированно - они обычные классы с конструкторными зависимостями
+
+Этот вводный док относится к [[S&P Digital & УБО Софт]] и продолжается более прикладной заметкой [[02-configuration]].

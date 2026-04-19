@@ -2,6 +2,7 @@
 * [[CSharp]]
 * [[Backend/Golang/Golang|Golang]]
 * [[Backend/Patterns/Patterns]]
+* [[Instruments/Databases/❌ Databases|Databases]]
 # Future roadmap and rules notes
 1. Язык 
 	1. Его особенности

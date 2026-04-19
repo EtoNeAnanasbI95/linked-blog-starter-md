@@ -1,4 +1,5 @@
 # Backend API — обновлённый план эндпоинтов (Django + DRF, JWT)
+Этот API-план -- часть [[MPT/Диплом/data|диплома]], вырос из [[01_functional_checklist|functional checklist]], завязан на [[04_db_entities_relationships|db relationships]] и относится к общему [[Backend]].
 
 Обновления по твоему чеклисту:
 - Добавлены эндпоинты для **работы с файлами** (создание/редактирование/удаление).

@@ -2,3 +2,5 @@
 # Table of content
 * [[Иридиум]]
 * [[S&P Digital & УБО Софт]]
+
+Эта ветка у меня пересекается и с [[Getting job]], и с реальным стеком по [[Backend]] и [[Frontend]].

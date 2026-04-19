@@ -1,4 +1,6 @@
 # AbortController
+Это один из прикладных приёмов из [[TS & JS]], который особенно часто всплывает в [[Runtime]] и в [[React хуки]].
+
 Вот пример использования `AbortController` в TypeScript для отмены асинхронного запроса:
 
 ```typescript

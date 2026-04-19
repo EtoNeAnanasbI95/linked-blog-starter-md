@@ -1,3 +1,5 @@
+Этот план я веду для плагина под [[Instruments/Obsidian/Obsidian|Obsidian]], рядом с заметкой [[Instruments/Obsidian/Self writing plugin|Self writing plugin]] и общим [[Personal/Projects/Obsidian-Knowledge-Rings/DESCRIPTION|описанием идеи]].
+
 ## 1. Инициализируй основу плагина Obsidian с React UI
 Сделай базовый плагин для Obsidian на TypeScript с поддержкой React в custom view.
 Что нужно:

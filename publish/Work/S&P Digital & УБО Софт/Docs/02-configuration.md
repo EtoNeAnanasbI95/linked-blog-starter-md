@@ -415,4 +415,5 @@ public static class MediatrRegistration
 // Уже в API:  
 builder.Services.AddApplicationMediatR(builder.Configuration, builder.Environment);  
 ```  
-  
+
+Это конфигурационное продолжение [[01-introduction]] внутри заметок по [[S&P Digital & УБО Софт]].

@@ -1,5 +1,7 @@
 # Создание
 ## Библиотеки
-Microsoft.Extensions.Hosting
+Microsoft.Extensions.Hosting -- базовая штука для фонового [[CSharp]]-сервиса в рамках [[Backend]]
 # Конфигурация
 # Запуск
+
+Такие воркеры потом ещё упираются в деплой и [[DevOps/CI-CD/CI-CD|CI-CD]].

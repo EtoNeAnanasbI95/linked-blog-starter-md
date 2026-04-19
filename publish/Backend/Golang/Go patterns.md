@@ -1,5 +1,7 @@
 ```table-of-contents
 ```
+Эти штуки продолжают [[Golang]] и пересекаются с общими [[Backend/Patterns/Patterns|backend-паттернами]] вроде [[Backend/Patterns/Clean architecture|Clean architecture]].
+
 # Option Pattern
 
 ## Проблема

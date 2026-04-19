@@ -1,4 +1,5 @@
 # Функционал платформы аренды облачных серверов — чеклист
+Этот чеклист -- часть [[MPT/Диплом/data|диплома]], из него дальше расходятся [[02_backend_api_endpoints|backend endpoints]], [[03_frontend_pages_fsd_plan|frontend pages]] и [[04_db_entities_relationships|db relationships]].
 
 Стек (зафиксировано):
 - Frontend (2 приложения): **React**, **TanStack Router**, **TanStack Query**, **Axios**, **Chart.js**, **sonner**, **shadcnUI** архитектура **FSD**
